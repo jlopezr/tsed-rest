@@ -16,4 +16,8 @@ export class CalendarService {
   findAll(): Calendar[] {
     return this.calendars;
   }
+
+  sayHello(): String {
+    return "Hello from the calendar service!";
+  }
 }

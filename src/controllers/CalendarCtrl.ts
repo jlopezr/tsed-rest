@@ -1,14 +1,17 @@
-import {Controller, Get, PathParams, BodyParams, Post, $log, Inject} from "@tsed/common";
+import {Controller, Get, PathParams, BodyParams, Post, $log, Inject, callHook} from "@tsed/common";
 import {Calendar} from '../models/Calendar';
-import {CalendarService} from "src/services/CalendarService";
 import {MongooseService, MongooseModel} from "@tsed/mongoose";
-import { mongo } from "mongoose";
-import { getKeys } from "@tsed/core";
+import { CalendarService } from "../services/CalendarService";
 
 @Controller("/calendars")
 export class CalendarCtrl {
 
-  constructor(mongoose: MongooseService, @Inject(Calendar) private model: MongooseModel<Calendar>) {
+
+
+  constructor(
+      private cal: CalendarService,
+      mongoose: MongooseService,
+      @Inject(Calendar) private model: MongooseModel<Calendar>) {
     const db1 = mongoose.get(); // OR mongooseService.get("default");
     const db2 = mongoose.get('db2');
   }
@@ -35,6 +38,11 @@ export class CalendarCtrl {
     $log.info("INFO");
     $log.debug("DEBUG");
     return `HOLA PERRUCHI. ${txt}`;
+  }
+
+  @Get("/service")
+  service(): String {
+    return this.cal.sayHello();
   }
 
   @Get("/:id")
