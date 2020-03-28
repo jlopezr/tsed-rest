@@ -8,7 +8,7 @@ async function bootstrap() {
   try {
     $log.debug("Start server...");
 
-    const server = await ServerLoader.bootstrap(Server);
+    const server = await ServerLoader.bootstrap(Server, config);
 
     await server.listen();
     $log.debug("Server initialized");

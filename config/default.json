@@ -1,2 +1,29 @@
 {
+  "debug": false,
+  "logger": {
+    "level": "debug"
+  },
+  "swagger": [
+    {
+      "path": "/api-docs"
+    }
+  ],
+  "mongoose": {
+    "urls": {
+      "default": {
+        "url": "mongodb://127.0.0.1:27017/db1",
+        "connectionOptions": {
+          "useNewUrlParser": true,
+          "useUnifiedTopology": true
+        }
+      },
+      "db2": {
+        "url": "mongodb://127.0.0.1:27017/db2",
+        "connectionOptions": {
+          "useNewUrlParser": true,
+          "useUnifiedTopology": true
+        }
+      }
+    }
+  }
 }

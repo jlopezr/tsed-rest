@@ -3,29 +3,15 @@ import * as bodyParser from "body-parser";
 import * as compress from "compression";
 import * as cookieParser from "cookie-parser";
 import * as methodOverride from "method-override";
+import "@tsed/swagger";
 
 const rootDir = __dirname;
 
 @ServerSettings({
   rootDir,
-  acceptMimes: ["application/json"],
-  debug: true,
-  logger: {
-    level: 'debug'
-  },
-  mongoose: {
-    urls: {
-      default: { // Recommended: define default connection. All models without dbName will be assigned to this connection
-        url: "mongodb://127.0.0.1:27017/db1",
-        connectionOptions: {}
-      },
-      db2: {
-        url: "mongodb://127.0.0.1:27017/db2",
-        connectionOptions: {}
-      }
-    }
-  }
-})
+  acceptMimes: ["application/json"]
+}
+)
 export class Server extends ServerLoader {
   /**
    * This method let you configure the express middleware required by your application to works.
