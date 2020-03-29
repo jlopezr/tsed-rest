@@ -1,7 +1,11 @@
 {
   "debug": false,
   "logger": {
-    "level": "debug"
+    "level": "debug",
+    "logRequest": false,
+    "logStart": false,
+    "logEnd":true,
+    "ignoreUrlPatterns": ["/favicon.ico"]
   },
   "swagger": [
     {

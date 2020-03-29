@@ -1,4 +1,4 @@
-import { Controller, Get, PathParams, BodyParams, Response, Post, Status } from "@tsed/common";
+import { Controller, Get, PathParams, BodyParams, Response, Post, Status, JsonSchemesService, $log } from "@tsed/common";
 import { Calendar } from '../models/Calendar';
 import { CalendarService } from "../services/CalendarService";
 import { Description, Returns, ReturnsArray } from "@tsed/swagger";
@@ -6,13 +6,19 @@ import { Description, Returns, ReturnsArray } from "@tsed/swagger";
 @Controller("/memory")
 export class MemoryCalendarCtrl {
 
-  constructor(private calendar: CalendarService) { }
+  constructor(private calendar: CalendarService, private jsonSchemaService: JsonSchemesService) { }
 
   @Get()
   @Description("Returns all the calendars")
   @ReturnsArray(200, { description: "all the calendars in the system", type: Calendar })
   findAll(): Calendar[] {
     return this.calendar.findAll()
+  }
+
+  @Get("/schema")
+  schema(): string {
+    const schema = this.jsonSchemaService.getSchemaDefinition(Calendar);
+    return JSON.stringify(schema);
   }
 
   @Get("/zero")
@@ -52,4 +58,6 @@ export class MemoryCalendarCtrl {
     result.owner = calendar.owner;
     return result;
   }
+
+
 }
