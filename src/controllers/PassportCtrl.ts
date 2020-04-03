@@ -6,10 +6,10 @@ import {Authenticate} from "@tsed/passport";
 export class PassportCtrl {
   @Post("/login")
   @Authenticate("login")
-  login(@Req() req: Req, @BodyParams("username") username: string, @BodyParams("password") password: string) {
+  login(@Req() req: Req, @BodyParams("email") email: string, @BodyParams("password") password: string) {
     $log.info("LOGIN");
     $log.info(JSON.stringify(req.body));
-    $log.info(`EMAIL ${username} PASS ${password}`);
+    $log.info(`EMAIL ${email} PASS ${password}`);
     return req.user;
   }
 }

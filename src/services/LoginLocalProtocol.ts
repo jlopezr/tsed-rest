@@ -16,9 +16,7 @@ export class LoginLocalProtocol implements OnVerify, OnInstall {
   constructor(private usersService: UsersService) {
   }
 
-  async $onVerify(@Req() request: Req, @BodyParams() credentials: Credentials) {
-   //$onVerify(@Req() request: Req, @BodyParams("username") username: string, @BodyParams("password") password: string) {
-
+  $onVerify(@Req() request: Req, @BodyParams() credentials: Credentials) {
     $log.info(`$on VERIFY LOCAL u:${credentials.email} p:${credentials.password}`);
 
     if (credentials.email === "juan" && credentials.password === "1234") {
@@ -30,6 +28,6 @@ export class LoginLocalProtocol implements OnVerify, OnInstall {
 
   $onInstall(strategy: Strategy): void {
     // intercept the strategy instance to adding extra configuration
-    $log.info("$on INSTALL")
+    $log.info("$onInstall LoginLocalProtocol");
   }
 }
