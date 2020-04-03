@@ -8,11 +8,11 @@ import "@tsed/swagger";
 
 const rootDir = __dirname;
 
+// https://swagger.io/docs/specification/2-0/authentication/api-keys/
 @ServerSettings({
   rootDir,
-  acceptMimes: ["application/json"]
-}
-)
+  acceptMimes: ["application/json"],
+})
 export class Server extends ServerLoader {
   /**
    * This method let you configure the express middleware required by your application to works.

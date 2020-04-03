@@ -9,7 +9,16 @@
   },
   "swagger": [
     {
-      "path": "/api-docs"
+      "path": "/api-docs",
+      "spec": {
+        "securityDefinitions": {
+          "jwt": {
+            "type": "apiKey",
+            "in": "query",
+            "name": "token"
+          }
+        }
+      }
     }
   ],
   "mongoose": {

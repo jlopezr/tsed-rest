@@ -3,6 +3,7 @@ import { Authenticate, Authorize } from "@tsed/passport";
 import { Credentials } from "../models/Credentials";
 import * as jwt from "jsonwebtoken";
 import * as moment from "moment";
+import { Security } from "@tsed/swagger";
 
 const DAY = 60000 * 60 * 24;
 export const TOKEN_EXP = DAY * 7;
@@ -32,6 +33,7 @@ export class PassportCtrl {
 
   @Get("/test")
   @Authenticate("jwt")
+  @Security("jwt")
   test() {
     return "HOLA";
   }
