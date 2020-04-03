@@ -36,7 +36,7 @@ export class CalendarService {
     return this.calendars.length;
   }
 
-  sayHello(): String {
+  sayHello(): string {
     return "Hello from the calendar service!";
   }
 }

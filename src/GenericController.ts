@@ -14,7 +14,7 @@ export class GenericController<T> {
   @Get("/service")
   @Description("Esta funcion te dice hola desde un controlador generico")
   @Returns(200, {description: "OK", type: String})
-  service(): String {
+  service(): string {
     return "SERVICE";
   }
 
