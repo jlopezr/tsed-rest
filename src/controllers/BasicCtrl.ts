@@ -34,4 +34,11 @@ export class BasicCtrl {
   service(): String {
     return this.calendar.sayHello();
   }
+
+  @Post("/json")
+  @Description("Esta funcion obtiene valores del JSON")
+  @Returns(200, {description: "OK", type: String})
+  json(@BodyParams("email") email: string, @BodyParams("password") password: string) {
+    return `EMAIL ${email} PASSWORD ${password}`;
+  }
 }

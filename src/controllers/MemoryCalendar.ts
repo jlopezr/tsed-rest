@@ -12,7 +12,9 @@ export class MemoryCalendarCtrl {
   @Description("Returns all the calendars")
   @ReturnsArray(200, { description: "all the calendars in the system", type: Calendar })
   findAll(): Calendar[] {
-    return this.calendar.findAll()
+    const result = this.calendar.findAll();
+    $log.info(JSON.stringify(result));
+    return result;
   }
 
   @Get("/schema")
