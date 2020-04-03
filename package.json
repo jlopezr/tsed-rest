@@ -24,7 +24,8 @@
     "mongoose": "^5.9.6",
     "node-uuid": "1.4.8",
     "passport": "^0.4.1",
-    "passport-http": "^0.3.0"
+    "passport-http": "^0.3.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "@tsed/testing-mongoose": "5.44.13",

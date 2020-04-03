@@ -1,4 +1,4 @@
-import {BodyParams, Req} from "@tsed/common";
+import {BodyParams, Req, $log} from "@tsed/common";
 import {OnInstall, OnVerify, Protocol} from "@tsed/passport";
 import {Strategy} from "passport";
 import {BasicStrategy} from "passport-http";
@@ -14,6 +14,8 @@ export class BasicProtocol implements OnVerify, OnInstall {
   }
 
   async $onVerify(@Req() request: Req, @BodyParams("username") username: string, @BodyParams("password") password: string) {
+
+    $log.info("$on VERIFY")
 
     if(username==="juan" && password==="1234") {
       return {user:"juan"};
@@ -39,5 +41,6 @@ export class BasicProtocol implements OnVerify, OnInstall {
 
   $onInstall(strategy: Strategy): void {
     // intercept the strategy instance to adding extra configuration
+    $log.info("$on INSTALL")
   }
 }

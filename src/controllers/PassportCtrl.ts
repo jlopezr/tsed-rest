@@ -5,10 +5,11 @@ import {Authenticate} from "@tsed/passport";
 @Scope(ProviderScope.SINGLETON)
 export class PassportCtrl {
   @Post("/login")
-  login(@Req() req: Req, @BodyParams("email") email: string, @BodyParams("password") password: string) {
+  @Authenticate("login")
+  login(@Req() req: Req, @BodyParams("username") username: string, @BodyParams("password") password: string) {
     $log.info("LOGIN");
     $log.info(JSON.stringify(req.body));
-    $log.info(`EMAIL ${email} PASS ${password}`);
+    $log.info(`EMAIL ${username} PASS ${password}`);
     return req.user;
   }
 }

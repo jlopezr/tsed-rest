@@ -1,9 +1,11 @@
-import { Controller, Get, PathParams, BodyParams, Post, $log, Inject } from "@tsed/common";
+import { Controller, Get, PathParams, BodyParams, Post, $log, Inject, Title } from "@tsed/common";
 import { MongooseService, MongooseModel } from "@tsed/mongoose";
 import { CalendarService } from "../services/CalendarService";
-import { Description, Returns } from "@tsed/swagger";
+import { Description, Returns, Name } from "@tsed/swagger";
 
 @Controller("/basic")
+@Name("Basic operations")
+@Description("here you can find basic operations on ts.ed")
 export class BasicCtrl {
 
   constructor(private calendar: CalendarService) {}
