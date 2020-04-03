@@ -1,11 +1,14 @@
 import { Controller, Get, PathParams, BodyParams, Post, Response} from "@tsed/common";
 import { Description, Returns } from "@tsed/swagger";
+import { AnyTxtRecord } from "dns";
 
 export class GenericController<T> {
   private l: T[];
+  protected model: any;
 
-  constructor() {
+  constructor(model: any) {
     this.l = [];
+    this.model = model;
   }
 
   @Get("/service")
